@@ -14,4 +14,3 @@ Dataset         : Casting Product Quality Inspection
 Dataset Source  : https://www.kaggle.com/datasets/ravirajsinh45/real-life-industrial-dataset-of-casting-product
 Total Images    : 7,284 (labeled: normal / anomaly)
 
-Edge Impulse Project: (paste your project link here)
