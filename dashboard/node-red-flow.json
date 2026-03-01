@@ -1,0 +1,170 @@
+[
+    {
+        "id": "144e3b71bf76fe24",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f027b3c2ae18596e",
+        "type": "function",
+        "z": "144e3b71bf76fe24",
+        "name": "function 1",
+        "func": "try {\n    var data = (typeof msg.payload === 'string') ? JSON.parse(msg.payload) : msg.payload;\n    msg.payload = data.confidence;\n    msg.topic = data.status;\n    return msg;\n} catch(e) {\n    node.error(\"Parse error: \" + e.message);\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 80,
+        "wires": [
+            [
+                "601102a53757f5f9",
+                "8cb3961438d7b358"
+            ]
+        ]
+    },
+    {
+        "id": "4db4429dbfa20b2d",
+        "type": "mqtt in",
+        "z": "144e3b71bf76fe24",
+        "name": "",
+        "topic": "motor/status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4d2ddb64d5074d70",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 80,
+        "wires": [
+            [
+                "f027b3c2ae18596e"
+            ]
+        ]
+    },
+    {
+        "id": "601102a53757f5f9",
+        "type": "ui_gauge",
+        "z": "144e3b71bf76fe24",
+        "name": "",
+        "group": "efa07b8be2b8c31e",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "confidence score",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 490,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8cb3961438d7b358",
+        "type": "ui_text",
+        "z": "144e3b71bf76fe24",
+        "group": "a43d43dfb07b6283",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Motor Status",
+        "format": "{{msg.topic}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 270,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "4d2ddb64d5074d70",
+        "type": "mqtt-broker",
+        "name": "name1",
+        "broker": "127.0.0.1",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "efa07b8be2b8c31e",
+        "type": "ui_group",
+        "name": "motor monitor",
+        "tab": "6415cc7b1c495e3a",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a43d43dfb07b6283",
+        "type": "ui_group",
+        "name": "Motor Dashboard",
+        "tab": "6415cc7b1c495e3a",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6415cc7b1c495e3a",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3f095807aa46f25e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
