@@ -1,5 +1,5 @@
 ## Model Details
-
+```
 Platform        : Edge Impulse
 Architecture    : MobileNetV2 96x96 (int8 quantized)
 Overall Accuracy: 87.8%
